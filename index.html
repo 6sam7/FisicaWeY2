@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101827">
+  <title>Laboratorio de Física Interactivo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-icon">⚛</span><span>FÍSICA<span class="brand-light">LAB</span><small>LABORATORIO INTERACTIVO</small></span></a>
+    <span class="top-tag">APRENDE · EXPERIMENTA · COMPRENDE</span>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">SIMULADORES DE MECÁNICA</p>
+        <h1>La física cobra<br><span>movimiento.</span></h1>
+        <p>Explora fenómenos físicos, modifica las variables y observa cómo cambian los resultados en tiempo real.</p>
+        <a class="hero-link" href="#experimentos">Explorar simuladores <span>↓</span></a>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="atom">⚛</div><div class="float-card">E = energía</div>
+        <div class="float-dot"></div>
+      </div>
+    </section>
+
+    <section class="concept-strip">
+      <div><b>01</b><span>Configura<br><small>las variables</small></span></div>
+      <div><b>02</b><span>Inicia<br><small>el experimento</small></span></div>
+      <div><b>03</b><span>Analiza<br><small>los resultados</small></span></div>
+    </section>
+
+    <section id="experimentos" class="section-heading">
+      <div><p class="eyebrow">ELIGE TU EXPERIMENTO</p><h2>Simuladores</h2></div>
+      <span class="live-label"><i></i> INTERACTIVOS</span>
+    </section>
+
+    <nav class="tabs" aria-label="Simuladores">
+      <button class="tab active" data-panel="freefall">↓ <span>Caída libre</span></button>
+      <button class="tab" data-panel="pendulum">◉ <span>Péndulo</span></button>
+      <button class="tab" data-panel="spring">↝ <span>Energía elástica</span></button>
+      <button class="tab" data-panel="ramp">▱ <span>Pelota en rampa</span></button>
+    </nav>
+
+    <section class="sim-panel active" id="freefall">
+      <div class="sim-intro"><div><p class="eyebrow">EXPERIMENTO 01</p><h2>Caída libre</h2><p>Observa cómo cae un objeto bajo la acción de la gravedad, sin considerar la resistencia del aire.</p></div><span class="formula">h = ½ · g · t²</span></div>
+      <div class="workspace">
+        <div class="controls">
+          <h3>Parámetros</h3>
+          <label for="ff-mass">Masa del objeto <output id="ff-mass-out">2 kg</output></label>
+          <input id="ff-mass" type="range" min="0.1" max="10000" step="0.1" value="2">
+          <div class="range-ends"><span>0,1 kg</span><span>10.000 kg</span></div>
+          <label for="ff-height">Altura inicial <output id="ff-height-out">20 m</output></label>
+          <input id="ff-height" type="range" min="0.1" max="10000" step="0.1" value="20">
+          <div class="range-ends"><span>0,1 m</span><span>10.000 m</span></div>
+          <label for="ff-gravity">Gravedad <output id="ff-gravity-out">9,8 m/s²</output></label>
+          <input id="ff-gravity" type="range" min="0.1" max="30" step="0.1" value="9.8">
+          <div class="range-ends"><span>0,1</span><span>30 m/s²</span></div>
+          <div class="button-row"><button class="primary" id="ff-start">▶ Iniciar caída</button><button class="secondary" id="ff-reset">↺</button></div>
+          <p class="hint">La masa no cambia la aceleración en el modelo ideal.</p>
+        </div>
+        <div class="visual-area">
+          <div class="visual-head"><b>Vista de simulación</b><span class="status" id="ff-status">LISTO</span></div>
+          <div class="stage fall-stage">
+            <div class="sky-label">ALTURA INICIAL</div><div class="ground"></div>
+            <div class="height-line"></div><div class="height-label" id="ff-height-label">20 m</div>
+            <div class="fall-object" id="ff-object">●</div><div class="ground-label">SUELO</div>
+          </div>
+          <div class="metrics">
+            <div><small>Tiempo</small><strong id="ff-time">0,00 <em>s</em></strong></div>
+            <div><small>Velocidad</small><strong id="ff-velocity">0,00 <em>m/s</em></strong></div>
+            <div><small>Energía potencial</small><strong id="ff-ep">392,00 <em>J</em></strong></div>
+            <div><small>Energía cinética</small><strong id="ff-ec">0,00 <em>J</em></strong></div>
+          </div>
+        </div>
+      </div>
+      <div class="results"><h3>Resultados teóricos</h3><div class="result-grid"><p>Tiempo de caída <b id="ff-total-time">2,02 s</b></p><p>Velocidad final <b id="ff-final-v">19,80 m/s</b></p><p>Energía mecánica inicial <b id="ff-em">392,00 J</b></p></div></div>
+    </section>
+
+    <section class="sim-panel" id="pendulum">
+      <div class="sim-intro"><div><p class="eyebrow">EXPERIMENTO 02</p><h2>Péndulo simple</h2><p>Estudia el movimiento oscilatorio de una masa suspendida de una cuerda.</p></div><span class="formula">T = 2π · √(L / g)</span></div>
+      <div class="workspace">
+        <div class="controls">
+          <h3>Parámetros</h3>
+          <label for="p-length">Longitud de la cuerda <output id="p-length-out">2 m</output></label>
+          <input id="p-length" type="range" min="0.1" max="100" step="0.1" value="2"><div class="range-ends"><span>0,1 m</span><span>100 m</span></div>
+          <label for="p-mass">Masa <output id="p-mass-out">1 kg</output></label>
+          <input id="p-mass" type="range" min="0.1" max="10000" step="0.1" value="1"><div class="range-ends"><span>0,1 kg</span><span>10.000 kg</span></div>
+          <label for="p-angle">Ángulo inicial <output id="p-angle-out">30°</output></label>
+          <input id="p-angle" type="range" min="5" max="80" step="1" value="30"><div class="range-ends"><span>5°</span><span>80°</span></div>
+          <label for="p-gravity">Gravedad <output id="p-gravity-out">9,8 m/s²</output></label>
+          <input id="p-gravity" type="range" min="0.1" max="30" step="0.1" value="9.8"><div class="range-ends"><span>0,1</span><span>30 m/s²</span></div>
+          <div class="button-row"><button class="primary" id="p-toggle">▶ Iniciar péndulo</button><button class="secondary" id="p-reset">↺</button></div>
+          <p class="hint">La masa no afecta el período del péndulo ideal.</p>
+        </div>
+        <div class="visual-area">
+          <div class="visual-head"><b>Movimiento oscilatorio</b><span class="status" id="p-status">PAUSADO</span></div>
+          <div class="stage pendulum-stage"><svg id="pendulum-svg" viewBox="0 0 500 310" role="img" aria-label="Animación de un péndulo"><line x1="250" y1="20" x2="250" y2="285" class="guide"/><line id="p-string" x1="250" y1="25" x2="350" y2="200" class="string"/><circle cx="250" cy="25" r="8" class="pivot"/><circle id="p-bob" cx="350" cy="200" r="17" class="bob"/><path id="p-arc" d="" class="arc"/></svg></div>
+          <div class="metrics">
+            <div><small>Período</small><strong id="p-period">2,84 <em>s</em></strong></div><div><small>Frecuencia</small><strong id="p-frequency">0,35 <em>Hz</em></strong></div>
+            <div><small>Altura máxima</small><strong id="p-maxheight">0,27 <em>m</em></strong></div><div><small>Energía potencial máxima</small><strong id="p-energy">2,63 <em>J</em></strong></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sim-panel" id="spring">
+      <div class="sim-intro"><div><p class="eyebrow">EXPERIMENTO 03</p><h2>Energía elástica</h2><p>Comprime o estira un resorte y calcula la energía potencial elástica almacenada.</p></div><span class="formula">Ee = ½ · k · x²</span></div>
+      <div class="workspace">
+        <div class="controls">
+          <h3>Parámetros</h3>
+          <label for="s-k">Constante elástica <output id="s-k-out">100 N/m</output></label>
+          <input id="s-k" type="range" min="1" max="10000" step="1" value="100"><div class="range-ends"><span>1 N/m</span><span>10.000 N/m</span></div>
+          <label for="s-x">Deformación <output id="s-x-out">0,2 m</output></label>
+          <input id="s-x" type="range" min="0.01" max="10" step="0.01" value="0.2"><div class="range-ends"><span>0,01 m</span><span>10 m</span></div>
+          <label for="s-mass">Masa conectada <output id="s-mass-out">1 kg</output></label>
+          <input id="s-mass" type="range" min="0.1" max="10000" step="0.1" value="1"><div class="range-ends"><span>0,1 kg</span><span>10.000 kg</span></div>
+          <div class="button-row"><button class="primary" id="s-release">↗ Soltar resorte</button><button class="secondary" id="s-reset">↺</button></div>
+          <p class="hint">Modelo ideal: no considera pérdidas por rozamiento.</p>
+        </div>
+        <div class="visual-area">
+          <div class="visual-head"><b>Resorte y bloque</b><span class="status" id="s-status">EN REPOSO</span></div>
+          <div class="stage spring-stage"><div class="spring-wall"></div><svg viewBox="0 0 500 230" role="img" aria-label="Resorte conectado a un bloque"><path id="spring-coil" d="" class="coil"/><rect id="spring-block" x="300" y="85" width="70" height="60" rx="9" class="block"/><line x1="25" y1="170" x2="465" y2="170" class="track"/></svg><span class="spring-caption">RESORTE IDEAL</span></div>
+          <div class="metrics"><div><small>Energía elástica</small><strong id="s-energy">2,00 <em>J</em></strong></div><div><small>Fuerza elástica</small><strong id="s-force">20,00 <em>N</em></strong></div><div><small>Amplitud</small><strong id="s-amplitude">0,20 <em>m</em></strong></div><div><small>Velocidad máxima ideal</small><strong id="s-speed">2,00 <em>m/s</em></strong></div></div>
+        </div>
+      </div>
+      <div class="results"><h3>Relaciones físicas</h3><div class="result-grid"><p>Ley de Hooke <b>F = −k · x</b></p><p>Energía almacenada <b id="s-energy-copy">2,00 J</b></p><p>Velocidad máxima <b id="s-speed-copy">2,00 m/s</b></p></div></div>
+    </section>
+
+    <section class="sim-panel" id="ramp">
+      <div class="sim-intro"><div><p class="eyebrow">EXPERIMENTO 04</p><h2>Pelota en rampa</h2><p>Observa cómo la energía potencial gravitatoria se transforma en energía cinética al descender por una rampa.</p></div><span class="formula">Ep = m · g · h</span></div>
+      <div class="workspace">
+        <div class="controls">
+          <h3>Parámetros</h3>
+          <label for="r-mass">Masa de la pelota <output id="r-mass-out">2 kg</output></label>
+          <input id="r-mass" type="range" min="0.1" max="10000" step="0.1" value="2"><div class="range-ends"><span>0,1 kg</span><span>10.000 kg</span></div>
+          <label for="r-height">Altura de la rampa <output id="r-height-out">5 m</output></label>
+          <input id="r-height" type="range" min="0.1" max="10000" step="0.1" value="5"><div class="range-ends"><span>0,1 m</span><span>10.000 m</span></div>
+          <label for="r-gravity">Gravedad <output id="r-gravity-out">9,8 m/s²</output></label>
+          <input id="r-gravity" type="range" min="0.1" max="30" step="0.1" value="9.8"><div class="range-ends"><span>0,1</span><span>30 m/s²</span></div>
+          <div class="button-row"><button class="primary" id="r-start">▶ Soltar pelota</button><button class="secondary" id="r-reset">↺</button></div>
+          <p class="hint">Se usa un modelo simplificado sin rozamiento ni rotación.</p>
+        </div>
+        <div class="visual-area">
+          <div class="visual-head"><b>Descenso por la rampa</b><span class="status" id="r-status">LISTO</span></div>
+          <div class="stage ramp-stage"><svg viewBox="0 0 500 280" role="img" aria-label="Pelota bajando por una rampa"><path d="M55 45 L425 225 L55 225 Z" class="ramp-fill"/><line x1="55" y1="45" x2="425" y2="225" class="ramp-line"/><line x1="55" y1="45" x2="55" y2="225" class="ramp-height"/><circle id="r-ball" cx="75" cy="55" r="15" class="r-ball"/><text x="28" y="137" class="svg-label">h</text><text x="230" y="252" class="svg-label">BASE DE LA RAMPA</text></svg></div>
+          <div class="metrics"><div><small>Velocidad</small><strong id="r-velocity">0,00 <em>m/s</em></strong></div><div><small>Altura actual</small><strong id="r-current-h">5,00 <em>m</em></strong></div><div><small>Energía potencial</small><strong id="r-ep">98,00 <em>J</em></strong></div><div><small>Energía cinética</small><strong id="r-ec">0,00 <em>J</em></strong></div></div>
+        </div>
+      </div>
+      <div class="results"><h3>Conservación de la energía</h3><div class="energy-bar"><span id="r-energy-ep"></span><span id="r-energy-ec"></span></div><div class="energy-legend"><span>● Potencial</span><span>● Cinética</span></div><p class="energy-total">Energía mecánica total: <b id="r-em">98,00 J</b></p></div>
+    </section>
+
+    <section class="theory">
+      <p class="eyebrow">FUNDAMENTOS</p><h2>La física detrás de cada movimiento</h2>
+      <div class="theory-grid">
+        <article><span>01</span><h3>Energía potencial</h3><p>Energía que tiene un objeto debido a su posición o altura.</p><b>Ep = m · g · h</b></article>
+        <article><span>02</span><h3>Energía cinética</h3><p>Energía asociada al movimiento de un cuerpo.</p><b>Ec = ½ · m · v²</b></article>
+        <article><span>03</span><h3>Energía mecánica</h3><p>En un sistema ideal es la suma de la energía potencial y cinética.</p><b>Em = Ep + Ec</b></article>
+        <article><span>04</span><h3>Energía elástica</h3><p>Energía almacenada cuando un resorte se deforma.</p><b>Ee = ½ · k · x²</b></article>
+      </div>
+    </section>
+    <footer><span>⚛ FÍSICALAB</span><span>Proyecto educativo · HTML · CSS · JavaScript</span></footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
